@@ -1,0 +1,277 @@
+:root {
+    /* Color */
+    --surface: #c0c0c0;
+    --button-highlight: #ffffff;
+    --button-face: #dfdfdf;
+    --button-shadow: #808080;
+    --window-frame: #0a0a0a;
+    --dialog-blue: #000080;
+    --dialog-blue-light: #1084d0;
+    --dialog-gray: #808080;
+    --dialog-gray-light: #b5b5b5;
+    --link-blue: #0000ff;
+  
+    /* Spacing */
+    --element-spacing: 8px;
+    --grouped-button-spacing: 4px;
+    --grouped-element-spacing: 6px;
+    --radio-width: 12px;
+    --checkbox-width: 13px;
+    --radio-label-spacing: 6px;
+    --range-track-height: 4px;
+    --range-spacing: 10px;
+  
+    /* Some detailed computations for radio buttons and checkboxes */
+    --radio-total-width-precalc: var(--radio-width) + var(--radio-label-spacing);
+    --radio-total-width: calc(var(--radio-total-width-precalc));
+    --radio-left: calc(-1 * var(--radio-total-width-precalc));
+    --radio-dot-width: 4px;
+    --radio-dot-top: calc(var(--radio-width) / 2 - var(--radio-dot-width) / 2);
+    --radio-dot-left: calc(
+      -1 * (var(--radio-total-width-precalc)) + var(--radio-width) / 2 - var(
+          --radio-dot-width
+        ) / 2
+    );
+  
+    --checkbox-total-width-precalc: var(--checkbox-width) +
+      var(--radio-label-spacing);
+    --checkbox-total-width: calc(var(--checkbox-total-width-precalc));
+    --checkbox-left: calc(-1 * var(--checkbox-total-width-precalc));
+    --checkmark-width: 7px;
+    --checkmark-top: 3px;
+    --checkmark-left: 3px;
+  
+    /* Borders */
+    --border-width: 1px;
+    --border-raised-outer: inset -1px -1px var(--window-frame),
+      inset 1px 1px var(--button-highlight);
+    --border-raised-inner: inset -2px -2px var(--button-shadow),
+      inset 2px 2px var(--button-face);
+    --border-sunken-outer: inset -1px -1px var(--button-highlight),
+      inset 1px 1px var(--window-frame);
+    --border-sunken-inner: inset -2px -2px var(--button-face),
+      inset 2px 2px var(--button-shadow);
+  
+    /* Window borders flip button-face and button-highlight */
+    --border-window-outer: inset -1px -1px var(--window-frame),
+      inset 1px 1px var(--button-face);
+    --border-window-inner: inset -2px -2px var(--button-shadow),
+      inset 2px 2px var(--button-highlight);
+  
+    /* Field borders (checkbox, input, etc) flip window-frame and button-shadow */
+    --border-field: inset -1px -1px var(--button-highlight),
+      inset 1px 1px var(--button-shadow), inset -2px -2px var(--button-face),
+      inset 2px 2px var(--window-frame);
+  }
+
+@font-face {
+    font-family: "Pixelated MS Sans Serif";
+    src: url("fonts/ms_sans_serif.woff") format("woff");
+    src: url("fonts/ms_sans_serif.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Pixelated MS Sans Serif";
+    src: url("fonts/ms_sans_serif_bold.woff") format("woff");
+    src: url("fonts/ms_sans_serif_bold.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+}
+
+.classic{
+    border-top : 2px solid #dde2db;
+    border-left: 2px solid #dde2db;
+    border-right: 2px ridge #3f434798;
+    border-bottom: 2px ridge #3f434798;
+    position: relative;    
+    color:#fef9ef;
+}
+.windows{
+    display: flex;
+    align-items: center;
+    font-family: "Pixelated MS Sans Serif";
+    justify-content: space-between;
+    position: absolute;
+    top:0;
+    text-align: left;
+    width: 100%;
+    height:30px;
+    left:0;
+    z-index: 5;
+    line-height: 1;
+    background: linear-gradient(90deg, rgba(48,52,128,1) 0%, rgba(88,112,177,1) 50%, rgba(166,189,227,1) 100%);
+    user-select: none;
+    
+}
+
+.wleft,.wright{
+    display: flex;
+    flex-direction: row;
+}
+
+.wleft img{
+    margin-left:5px;
+    margin-right: 2.5px;
+    width: auto;
+    height: auto;
+    max-width: 20px;
+}
+.wleft span{
+    font-family: "Pixelated MS Sans Serif";
+    font-smooth: never;
+    letter-spacing: 1.15px;
+    color: white !important;
+    width: fit-content;
+    -webkit-font-smoothing : none;
+}
+
+.wright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    margin-right: 5px;
+}
+
+.wright .box{
+    margin-right:.5px;
+    padding:1.5px 1.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:18px;
+    height:16px;
+    background-color: #d4d0c8;
+    text-align: center;
+    border-top : 2px solid #dde2db;
+    border-left: 2px solid #dde2db;
+    border-right: 2px ridge #3f434798;
+    border-bottom: 2px ridge #3f434798;
+}
+.wright .box:active{
+    border-top : 2px solid #3f434798;
+    border-left: 2px solid #3f434798;
+    border-right: 2px ridge #dde2db;
+    border-bottom: 2px ridge #dde2db;
+}
+
+.wright span{
+    font-size: 16px;
+    margin:0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    color: black;
+    transform: translate(.75px, -.9px) scale(1.5, 1.2);
+}
+
+.wright .box .maximize{
+    width: 65%;
+    height: 8px;
+    
+    border: 2px solid black;
+    border-top: 4px solid black
+}
+.wright .box._ span{
+    transform: translate(-2px, -10px) scale(1.1, 2);
+
+}
+
+.wright .box.disabled{
+    border-bottom : 2px solid #dde2db;
+    border-right: 2px solid #dde2db;
+    border-left: 2px ridge #3f434798;
+    border-top: 2px ridge #3f434798;
+    background-color: #d4d0c8;
+    opacity: .5;
+    cursor:default;
+}
+
+.win-container{
+    padding-top:30px;
+}
+
+/* button block */
+
+.button{
+    min-width: 75px;
+    min-height: 25px;
+    margin:10px 0px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    -webkit-font-smoothing: antialiased;
+    color: black !important;
+    user-select: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 100;
+}
+.button.classic{
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+.button.classic.disabled{
+    text-shadow: 1px 1px 0 #fff;
+    color:grey;
+}
+.button.classic.disabled:active{
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+    padding:inherit;
+}
+.button.classic:active{
+    box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    padding: 2px 11px 0 13px;
+}
+
+::-webkit-scrollbar {
+    width: 16px;
+  }
+  ::-webkit-scrollbar:horizontal {
+    height: 17px;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: var(--button-face);
+  }
+  
+  ::-webkit-scrollbar-track {
+    /* background-image: url("./icon/scrollbar-background.svg"); */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--button-face);
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+  }
+  
+  ::-webkit-scrollbar-button:horizontal:start:decrement,
+  ::-webkit-scrollbar-button:horizontal:end:increment,
+  ::-webkit-scrollbar-button:vertical:start:decrement,
+  ::-webkit-scrollbar-button:vertical:end:increment {
+    display: block;
+  }
+  
+  ::-webkit-scrollbar-button:vertical:start {
+    height: 17px;
+    background-image: url("/icon/button-up.svg");
+  }
+  ::-webkit-scrollbar-button:vertical:end {
+    height: 17px;
+    background-image: url("/icon/button-down.svg");
+  }
+  ::-webkit-scrollbar-button:horizontal:start {
+    width: 16px;
+    background-image: url("/icon/button-left.svg");
+  }
+  ::-webkit-scrollbar-button:horizontal:end {
+    width: 16px;
+    background-image: url("/icon/button-right.svg");
+    
+  }
